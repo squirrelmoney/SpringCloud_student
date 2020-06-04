@@ -1,0 +1,33 @@
+server:
+  port: 8001
+
+mybatis:
+  config-location: classpath:mybatis/maybatis.cfg.xml
+  mapper-locations: classpath:mybatis/mappers/*.xml
+    
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/student
+    username: root
+    password: 123
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    connection-properties: druid.stat.mergeSql:true;druid.stat.slowSqlMillis:5000
+  # 禁用缓存
+  thymeleaf:
+    cache: false
+    # 开启mvc的HiddenHttpMethodFilter，以便可以表单可以发送PUT、DELETE等请求
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
